@@ -24,7 +24,7 @@ checkIfFinite(Infinity) // false
 */
 
 function checkIfFinite(num){
-    return isFinite(num);
+    return Number.isFinite(num);
 }
 
 /*
@@ -38,12 +38,7 @@ areAllNumbersFinite(finiteNumsExceptOne) // false
 */
 
 function areAllNumbersFinite(arr){
-    for(let item of arr){
-        if(!isFinite(item)){
-            return false
-        }
-    }
-    return true;
+    return arr.every(Number.isFinite)
 }
 
 /* 
@@ -70,14 +65,8 @@ displayEvenArguments(7,8,9) // [8]
 displayEvenArguments(1,3,7) // []
 */
 
-function displayEvenArguments(...args){
-  let newArr = [];
-  for(let item of args){
-      if(item % 2 === 0){
-          newArr.push(item);
-      }
-  }
-  return newArr;
+function displayEvenArguments(){
+  return Array.from(arguments).filter(val => val % 2 === 0);
 }
 
 
